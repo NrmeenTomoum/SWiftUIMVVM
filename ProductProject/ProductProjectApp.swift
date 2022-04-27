@@ -2,7 +2,7 @@
 //  ProductProjectApp.swift
 //  ProductProject
 //
-//  Created by Nrmeen Tomoum on 27/04/2022.
+//  Created by Nermeen Tomoum on 27/04/2022.
 //
 
 import SwiftUI
