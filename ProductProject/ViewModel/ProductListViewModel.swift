@@ -15,7 +15,7 @@ class ProductListViewModel: ObservableObject {
     private var task: AnyCancellable?
     
     @Published var productList: ProductList = ProductList(title: "", currency: "", items: [])
-    
+    @Published var productWishList : ProductList = ProductList(title: "", currency: "", items: [])
     func fetchProducts() {
         task = URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
             .tryMap() { element -> Data in
@@ -32,5 +32,14 @@ class ProductListViewModel: ObservableObject {
                 print ("Received user: \(user).")
                 self.productList = user
             })
+    }
+    
+    func addToWishList(product: Product){
+        productWishList.items.append(product)
+    }
+    func removeFromWishLsit(product: Product){
+        if let itemToRemoveIndex = productWishList.items.firstIndex(of: product) {
+        productWishList.items.remove(at:itemToRemoveIndex)
+        }
     }
 }

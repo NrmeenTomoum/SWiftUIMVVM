@@ -10,7 +10,7 @@ import Foundation
 struct ProductList: Decodable, Hashable {
     let title: String
     let currency: String
-    let items: [Product]
+    var items: [Product]
 }
 
 struct Product: Decodable, Hashable {
@@ -25,7 +25,10 @@ struct Product: Decodable, Hashable {
     var priceRoundWithCurrency : String {
         return price.removeZerosFromEnd()
     }
-    var originalPriceRoundWithCurrency : String {
-        return price.removeZerosFromEnd()
+    func getOriginalPriceRoundWithCurrency(currency: String)-> String{
+        if let originalPrice = originalPrice{
+            return "\(originalPrice.removeZerosFromEnd()) \(currency)"
+        }
+        return ""
     }
 }
