@@ -37,9 +37,15 @@ class ProductListViewModel: ObservableObject {
     func addToWishList(product: Product){
         productWishList.items.append(product)
     }
-    func removeFromWishLsit(product: Product){
+    
+    func removeFromWishList(product: Product){
         if let itemToRemoveIndex = productWishList.items.firstIndex(of: product) {
         productWishList.items.remove(at:itemToRemoveIndex)
         }
     }
+    
+    func isInWishList(product: Product) -> Bool{
+       return productWishList.items.contains(product)
+    }
+    
 }

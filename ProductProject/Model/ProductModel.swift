@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+enum Badges : String, Decodable{
+    case NEW, SALE
+}
 struct ProductList: Decodable, Hashable {
     let title: String
     let currency: String
@@ -21,7 +23,7 @@ struct Product: Decodable, Hashable {
     let name: String
     let price: Double
     let originalPrice: Double?
-    let badges: [String]
+    let badges: [Badges]
     var priceRoundWithCurrency : String {
         return price.removeZerosFromEnd()
     }

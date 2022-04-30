@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductWishView: View {
-    private let product: Product
+    private var product: Product
     private let currency: String
     private let width = UIScreen.main.bounds.size.width/2 - 48
     private var viewModel : ProductListViewModel
@@ -22,6 +22,7 @@ struct ProductWishView: View {
         HStack(alignment: .top, spacing: 5){
                 AsyncImage(url: URL(string:product.image)) { image in
                     image.resizable()
+                        .scaledToFit()
                 } placeholder: {
                     ProgressView()
                 }.frame(width: width, height: width*1.5)
@@ -42,7 +43,7 @@ struct ProductWishView: View {
         HStack {
             Spacer()
             Button(action: {
-                viewModel.removeFromWishLsit(product: product)
+                viewModel.removeFromWishList(product: self.product)
             }) {
                 HStack {
                     Image("remove").resizable().frame(width: 100, height: 30)
@@ -57,6 +58,6 @@ struct ProductWishView: View {
 
 struct ProductWishView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductWishView(viewModel: ProductListViewModel(), product: Product(id: "", sku: "", image: "https://i.imgur.com/nZkuhr9m.jpg", brand: "title-1", name: "SAINT LAURENT", price: 2333, originalPrice: 4657, badges: ["",""]), currency: "AED")
+        ProductWishView(viewModel: ProductListViewModel(), product: Product(id: "", sku: "", image: "https://i.imgur.com/nZkuhr9m.jpg", brand: "title-1", name: "SAINT LAURENT", price: 2333, originalPrice: 4657, badges: [.NEW,.SALE]), currency: "AED")
     }
 }

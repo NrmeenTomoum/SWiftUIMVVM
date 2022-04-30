@@ -12,6 +12,7 @@ struct ProductView: View {
     private let product: Product
     private let currency: String
     private var viewModel : ProductListViewModel
+    private var gridItemLayout =    [GridItem(.adaptive(minimum:50))]
     private let width = UIScreen.main.bounds.size.width/2 - 48
     init(product: Product, viewModel: ProductListViewModel ) {
         self.viewModel = viewModel
@@ -20,28 +21,37 @@ struct ProductView: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 5){
-            ZStack (alignment: .topTrailing){
+            ZStack (alignment: .topLeading){
                 AsyncImage(url: URL(string:product.image)) { image in
-                    image.resizable().shadow(radius: 0)
+                    image.resizable()
+                        .shadow(radius: 0)
                 } placeholder: {
                     ProgressView()
-                }    .frame(width:width, height: width * 1.4)
-                Button(action: {
-                    isSelected = !isSelected
-                    isSelected ?  viewModel.addToWishList(product: product) : viewModel.removeFromWishLsit(product: product)
+                }
+                .frame(width:width, height: width * 1.4)
+                HStack{
+                    LazyVGrid(columns: gridItemLayout, spacing: 0) {
+                        ForEach(product.badges  , id: \.self){    badge in
+                            BadgeView(title:badge.rawValue)
+                        }
+                    }.frame(width: width - 25)
+                    Button(action: {
+                        isSelected = !isSelected
+                        isSelected ?  viewModel.addToWishList(product: product) : viewModel.removeFromWishList(product: product)
                         
-                }) {
-                    Image(isSelected ? "saved-icon" : "unsaved-icon").resizable().frame(width: 25, height: 30)
-                }.padding([.trailing,.top], 8)
+                    }) {
+                        Image(self.viewModel.isInWishList(product: product) ? "saved-icon" : "unsaved-icon").resizable().frame(width: 25, height: 30)
+                    }
+                }
             }
-                Text(product.brand.uppercased())
-                    .font(.system(size: 16))
-                    .padding(.top, 16)
-                    .foregroundColor(.black)
-                Text(product.name.uppercased())
-                    .font(.system(size: 12))
-                    .foregroundColor(Color.init(uiColor: UIColor.init(hexaString: "#6d6d6d")))
-                    .padding(.bottom, 16)
+            Text(product.brand.uppercased())
+                .font(.system(size: 16))
+                .padding(.top, 16)
+                .foregroundColor(.black)
+            Text(product.name.uppercased())
+                .font(.system(size: 12))
+                .foregroundColor(Color.init(uiColor: UIColor.init(hexaString: "#6d6d6d")))
+                .padding(.bottom, 16)
             HStack {
                 Text("\(product.priceRoundWithCurrency) \(currency)")
                     .font(.system(size: 12))
@@ -57,6 +67,6 @@ struct ProductView: View {
 
 struct ProductView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductView(product: Product(id: "", sku: "", image: "https://i.imgur.com/nZkuhr9m.jpg", brand: "title-1", name: "SAINT LAURENT", price: 2333, originalPrice: 4657, badges: ["",""]), viewModel: ProductListViewModel())
+        ProductView(product: Product(id: "", sku: "", image: "https://i.imgur.com/nZkuhr9m.jpg", brand: "title-1", name: "SAINT LAURENT", price: 2333, originalPrice: 4657, badges: [.NEW,.SALE]), viewModel: ProductListViewModel())
     }
 }

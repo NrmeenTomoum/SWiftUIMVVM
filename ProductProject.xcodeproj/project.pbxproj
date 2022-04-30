@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6876400A281D492600079B9D /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68764009281D492600079B9D /* BadgeView.swift */; };
 		68D91406281BA97F00EFEDD8 /* ProductWishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D91405281BA97F00EFEDD8 /* ProductWishView.swift */; };
 		68D91408281BAAD100EFEDD8 /* ProductWishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D91407281BAAD100EFEDD8 /* ProductWishListView.swift */; };
 		68E018F82819A99900293946 /* ProductProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E018F72819A99900293946 /* ProductProjectApp.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68764009281D492600079B9D /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		68D91405281BA97F00EFEDD8 /* ProductWishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductWishView.swift; sourceTree = "<group>"; };
 		68D91407281BAAD100EFEDD8 /* ProductWishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductWishListView.swift; sourceTree = "<group>"; };
 		68E018F42819A99900293946 /* ProductProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 				68E019332819E12600293946 /* ProductDetails.swift */,
 				68D91405281BA97F00EFEDD8 /* ProductWishView.swift */,
 				68D91407281BAAD100EFEDD8 /* ProductWishListView.swift */,
+				68764009281D492600079B9D /* BadgeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				68E019302819B8D700293946 /* ProductListViewModel.swift in Sources */,
 				68E019322819BFF300293946 /* ProductColor.swift in Sources */,
 				68E019042819A99D00293946 /* ProductProject.xcdatamodeld in Sources */,
+				6876400A281D492600079B9D /* BadgeView.swift in Sources */,
 				68D91408281BAAD100EFEDD8 /* ProductWishListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
