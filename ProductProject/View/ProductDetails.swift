@@ -12,7 +12,7 @@ struct ProductDetails: View {
     @State var isSelected = false
     private let product: Product
     private var viewModel : ProductListViewModel
-    private var gridItemLayout =    [GridItem(.adaptive(minimum:50))]
+    private var gridItemLayout =    [GridItem(.adaptive(minimum:35))]
 
     private let width = UIScreen.main.bounds.size.width
     init(product: Product, viewModel: ProductListViewModel ) {
@@ -21,19 +21,18 @@ struct ProductDetails: View {
     }
     var body: some View {
         VStack(alignment: .center, spacing: 5){
-            ZStack(alignment: .topLeading){
             LazyVGrid(columns: gridItemLayout, spacing: 0) {
                 ForEach(product.badges  , id: \.self){    badge in
                     BadgeView(title:badge.rawValue)
                 }
-            }.frame(width: width - 25)
+            }.padding([.top,.leading], 16)
             
             AsyncImage(url: URL(string:product.image)) { image in
                 image.resizable().shadow(radius: 0)
             } placeholder: {
                 ProgressView()
             }    .frame(width:width, height: width * 1.3)
-            }
+            
             Text(product.brand.uppercased())
                 .font(.system(size: 16))
                 .padding(.top, 16)

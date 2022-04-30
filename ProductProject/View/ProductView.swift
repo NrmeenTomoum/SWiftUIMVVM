@@ -12,7 +12,7 @@ struct ProductView: View {
     private let product: Product
     private let currency: String
     private var viewModel : ProductListViewModel
-    private var gridItemLayout =    [GridItem(.adaptive(minimum:50))]
+    private var gridItemLayout =    [GridItem(.adaptive(minimum:35))]
     private let width = UIScreen.main.bounds.size.width/2 - 48
     init(product: Product, viewModel: ProductListViewModel ) {
         self.viewModel = viewModel
