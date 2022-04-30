@@ -40,7 +40,7 @@ struct ProductView: View {
                         isSelected ?  viewModel.addToWishList(product: product) : viewModel.removeFromWishList(product: product)
                         
                     }) {
-                        Image(self.viewModel.isInWishList(product: product) ? "saved-icon" : "unsaved-icon").resizable().frame(width: 25, height: 30)
+                        Image(self.viewModel.isInWishList(product: product) ? "saved-icon" : "unsaved-icon").resizable().frame(width: 25, height: 30).padding(.trailing, -16)
                     }
                 }
             }

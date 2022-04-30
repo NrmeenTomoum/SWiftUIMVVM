@@ -68,7 +68,8 @@ struct ProductDetails: View {
                 }) {
                     HStack {
                         NavigationLink(destination: ProductWishListView(viewModel: viewModel)) {
-                            Image("unsaved-icon").resizable().frame(width: 20, height: 30)
+                            Image("unsaved-icon").resizable()
+                                .frame(width: 35, height: 40)
                         }
                     }
                 }
@@ -78,7 +79,7 @@ struct ProductDetails: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {
-                        Image(systemName: "arrow.backward").resizable().frame(width: 25, height: 15).colorMultiply(.black)
+                        Image(systemName: "arrow.backward").resizable().frame(width: 20, height: 13).colorMultiply(.black)
                     }
                 }
             }
