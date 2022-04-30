@@ -17,7 +17,7 @@ struct ProductListView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 5) {
                     ForEach(viewModel.productList.items  , id: \.self){ product in
-                        NavigationLink(destination: ProductDetails()) {
+                        NavigationLink(destination: ProductDetails(product: product, viewModel: viewModel)) {
                             ProductView(product: product, viewModel :viewModel).frame(width: width, height: width * 2.5)
                         }
                     }

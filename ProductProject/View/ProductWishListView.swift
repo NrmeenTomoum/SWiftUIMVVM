@@ -10,21 +10,17 @@ struct ProductWishListView: View {
     @Environment(\.presentationMode) var presentationMode
     private let productWishList: ProductList
     private let width = UIScreen.main.bounds.size.width
+    private var viewModel : ProductListViewModel
 
     init(viewModel: ProductListViewModel) {
         self.productWishList = viewModel.productWishList
+        self.viewModel = viewModel
     }
     var body: some View {
         
         List(productWishList.items, id: \.id) { product in
             HStack(spacing: 0) {
-                ProductWishView(product: product, currency: productWishList.currency)
-
-                NavigationLink(destination: ProductDetails()) {
-                    EmptyView()
-                }
-                .frame(width: 0)
-                .opacity(0)
+                ProductWishView(viewModel: viewModel, product: product, currency: productWishList.currency)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.init(uiColor: UIColor.init(hexaString: "#fbfbfb")))
